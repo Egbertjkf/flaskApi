@@ -1,7 +1,14 @@
 .env
+env
 .migrations
+migrations
 .idea
+idea
 .mypu_cache
+mypu_cache
 .vscode
+vscode
 .pipfile
+pipfile
 .pipfile.lock
+pipfile.lock
