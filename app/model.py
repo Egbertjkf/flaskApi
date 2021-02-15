@@ -64,9 +64,10 @@ class Clifor(db.Model):
     nr_ie = db.Column(db.String(15))
     dt_altera = db.Column(db.Date)
     nr_cpfcnpj = db.Column(db.String(14), nullable=False)
+    cd_classif = db.Column(db.Integer)
 
     def __init__(self, cd_clifor, nr_fone, nm_razao, nm_endereco, nr_endereco, nm_bairro,
-                 nr_cep, nm_cidade, nm_uf, nm_fantasia, nr_ie, nr_cpfcnpj, dt_altera):
+                 nr_cep, nm_cidade, nm_uf, nm_fantasia, nr_ie, nr_cpfcnpj, dt_altera,cd_classif):
         self.cd_clifor = cd_clifor
         self.nr_fone = nr_fone
         self.nm_razao = nm_razao
@@ -80,6 +81,7 @@ class Clifor(db.Model):
         self.nr_ie = nr_ie
         self.dt_altera = dt_altera
         self.nr_cpfcnpj = nr_cpfcnpj
+        self.cd_classif = cd_classif
 
     def __repr__(self):
         return f"< Clifor {self.nm_fantasia} >"
@@ -176,7 +178,7 @@ class It_pedido(db.Model):
 
     __tablename__ = 'it_pedido'
 
-    nr_pedido = db.Column(db.Integer, primary_key=True)
+    nr_pedido = db.Column(db.Integer, db.ForeignKey('pedido.nr_pedido'))
     nr_sequen = db.Column(db.Integer, primary_key=True)
     nr_pedidoSist = db.Column(db.Integer)
     cd_produto = db.Column(db.String(20))
@@ -260,12 +262,10 @@ class Vendedor(db.Model):
 
     cd_vendedor = db.Column(db.Integer, primary_key=True)
     nm_vendedor = db.Column(db.String(60))
-    ds_senha = db.Column(db.String(10))
 
-    def __init__(self, cd_vendedor, nm_vendedor, ds_senha):
+    def __init__(self, cd_vendedor, nm_vendedor):
         self.cd_vendedor = cd_vendedor
         self.nm_vendedor = nm_vendedor
-        self.ds_senha = ds_senha
 
     def __repr__(self):
         return f"< Vendedor {self.cd_vendedor} >"

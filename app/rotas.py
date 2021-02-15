@@ -18,6 +18,37 @@ bp_vendedor = Blueprint('Vendedor', __name__)
 bp_Tempclifor = Blueprint('TempClifor', __name__)
 
 
+@bp_vendedor.route('/impVendedor',methods='GET')
+@jwt_required
+def mostraVendedor():
+    vs = VendedorSchema(many=True)
+    result = Vendedor.query.all()
+    return vs.jsonify(result)
+
+@bp_vendedor.route('/CadVendedor',methods='GET')
+@jwt_required
+def CadVendedor():
+    if request.is_json:
+        data = request.get_json()
+        if type(data) == list:
+            itens = len(data)
+            s = 0
+            while s <= itens-1:
+                lista = data[s]
+                new_clifor = Clifor(
+                    cd_clifor=lista['cd_vendedor'],
+                    nr_fone=lista['nm_vendedor']
+                    )
+                db.session.add(new_clifor)
+                db.session.commit()
+                s = s + 1
+            return {"status": "Enviado"}
+    else:
+        return {"error": "The request payload is not in JSON format"}
+ 
+
+
+
 @bp_pessoa.route('/impPessoa', methods=['GET'])
 @jwt_required
 def mostrar():
@@ -64,6 +95,67 @@ def mostraClifor():
         result = Clifor.query.all()
     return cs.jsonify(result)
 
+
+@bp_clifor.route('/CadClifor', methods=['GET'])
+@jwt_required
+def cadastraClifor():
+    if request.is_json:
+        data = request.get_json()
+        if type(data) == list:
+            itens = len(data)
+            s = 0
+            while s <= itens-1:
+                lista = data[s]
+                new_clifor = Clifor(
+                    cd_clifor=lista['cd_clifor'],
+                    nr_fone=lista['nr_fone'],
+                    nm_razao=lista['nm_razao'],
+                    nm_endereco=lista['nm_endereco'],
+                    nr_endereco=lista['nr_endereco'],
+                    nm_bairro=lista['nm_bairro'],
+                    nr_cep=lista['nr_cep'],
+                    nm_cidade=lista['nm_cidade'],
+                    nm_uf=lista['nm_uf'],
+                    nm_fantasia=lista['nm_fantasia'],
+                    nr_ie=lista['nr_ie'],
+                    nr_cpfcnpj=lista['nr_cpfcnpj'],
+                    cd_vendedor=lista['cd_vendedor'],
+                    cd_classif=lista['cd_classif']
+                )
+                db.session.add(new_clifor)
+                db.session.commit()
+                s = s + 1
+            return {"status": "Enviado"}
+        else:
+            new_clifor = Clifor(
+                cd_clifor=data['cd_clifor'],
+                nr_fone=data['nr_fone'],
+                nm_razao=data['nm_razao'],
+                nm_endereco=data['nm_endereco'],
+                nr_endereco=data['nr_endereco'],
+                nm_bairro=data['nm_bairro'],
+                nr_cep=data['nr_cep'],
+                nm_cidade=data['nm_cidade'],
+                nm_uf=data['nm_uf'],
+                nm_fantasia=data['nm_fantasia'],
+                nr_ie=data['nr_ie'],
+                nr_cpfcnpj=data['nr_cpfcnpj'],
+                cd_vendedor=data['cd_vendedor'],
+                cd_classif=lista['cd_classif']
+            )
+            db.session.add(new_clifor)
+            db.session.commit()
+            return {"status": "Enviado"}
+    else:
+        return {"error": "The request payload is not in JSON format"}, 401
+
+
+@bp_Tempclifor.route('/impTempClifor', methods=['GET'])
+@jwt_required
+def mostraCondPg():
+    ctps = TempCliforSchema(many=True)
+    result = TempClifor.query.all()
+    return ctps.jsonify(result)
 
 @bp_Tempclifor.route('/cadTempClifor', methods=['POST'])
 @jwt_required
@@ -242,12 +334,31 @@ def mostraTabPreCli():
     return tabpres.jsonify(result)
 
 
-@bp_vendedor.route('/impTabPreCli', methods=['GET'])
+@bp_tabpre_cli.route('/impTabPreCli', methods=['GET'])
 @jwt_required
-def mostraVendedor():
-    veds = VendedorSchemaSchema(many=True)
-    result = Vendedor.query.all()
-    return veds.jsonify(result)
+def cadastraTabPreCli():
+    if request.is_json:
+        data = request.get_json()
+        if type(data) == list:
+            itens = len(data)
+            s = 0
+            while s <= itens-1:
+                lista = data[s]
+                new_clifor = TempClifor(
+                    cd_clifor=lista['cd_clifor'],
+                    ds_produto=lista['ds_produto'],
+                    nr_sequen=lista['nr_sequen'],
+                    dt_implanta=lista['dt_implanta'],
+                    vl_tabela=lista['vl_tabela'],
+                    fl_status=lista['fl_status'],
+                    dt_ultvenda=lista['dt_ultvenda'],
+                    vl_percmax=lista['vl_percmax'],
+                    vl_percmin=lista['vl_percmin']
+                )
+                db.session.add(new_clifor)
+                db.session.commit()
+                s = s + 1
+            return {"status": "Enviado"}
 
 
 @bp_pessoa.route('/internet', methods=['GET'])

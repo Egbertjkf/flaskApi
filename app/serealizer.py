@@ -139,7 +139,6 @@ class VendedorSchema(ma.Schema):
         fields = (
             "cd_vendedor",
             "nm_vendedor",
-            "ds_senha"
         )
 
 
