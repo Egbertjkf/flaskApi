@@ -38,10 +38,14 @@ def create_app():
     from .rotas import bp_vendedor
     app.register_blueprint(bp_vendedor)
 
+#    from .rotas import bp_vendedor
+#    app.register_blueprint(bp_vendedor)
+
     from .rotas import bp_pedido
     app.register_blueprint(bp_pedido)
 
     from .rotas import bp_Tempclifor
     app.register_blueprint(bp_Tempclifor)
+
 
     return app

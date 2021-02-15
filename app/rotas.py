@@ -18,14 +18,14 @@ bp_vendedor = Blueprint('Vendedor', __name__)
 bp_Tempclifor = Blueprint('TempClifor', __name__)
 
 
-@bp_vendedor.route('/impVendedor',methods='GET')
+@bp_vendedor.route('/impVendedor',methods=['GET'])
 @jwt_required
 def mostraVendedor():
     vs = VendedorSchema(many=True)
     result = Vendedor.query.all()
     return vs.jsonify(result)
 
-@bp_vendedor.route('/CadVendedor',methods='GET')
+@bp_vendedor.route('/CadVendedor',methods=['POST'])
 @jwt_required
 def CadVendedor():
     if request.is_json:
@@ -35,11 +35,11 @@ def CadVendedor():
             s = 0
             while s <= itens-1:
                 lista = data[s]
-                new_clifor = Clifor(
+                new_Vendedor = Vendedor(
                     cd_clifor=lista['cd_vendedor'],
                     nr_fone=lista['nm_vendedor']
                     )
-                db.session.add(new_clifor)
+                db.session.add(new_Vendedor)
                 db.session.commit()
                 s = s + 1
             return {"status": "Enviado"}
@@ -96,7 +96,7 @@ def mostraClifor():
     return cs.jsonify(result)
 
 
-@bp_clifor.route('/CadClifor', methods=['GET'])
+@bp_clifor.route('/CadClifor', methods=['POST'])
 @jwt_required
 def cadastraClifor():
     if request.is_json:
@@ -334,7 +334,7 @@ def mostraTabPreCli():
     return tabpres.jsonify(result)
 
 
-@bp_tabpre_cli.route('/impTabPreCli', methods=['GET'])
+@bp_tabpre_cli.route('/CadTabPreCli', methods=['POST'])
 @jwt_required
 def cadastraTabPreCli():
     if request.is_json:
@@ -344,7 +344,7 @@ def cadastraTabPreCli():
             s = 0
             while s <= itens-1:
                 lista = data[s]
-                new_clifor = TempClifor(
+                new_clifor = Tabpre_cli(
                     cd_clifor=lista['cd_clifor'],
                     ds_produto=lista['ds_produto'],
                     nr_sequen=lista['nr_sequen'],
