@@ -1,0 +1,7 @@
+.env
+.migrations
+.idea
+.mypu_cache
+.vscode
+.pipfile
+.pipfile.lock
