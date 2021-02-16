@@ -67,7 +67,7 @@ class Clifor(db.Model):
     cd_classif = db.Column(db.Integer)
 
     def __init__(self, cd_clifor, nr_fone, nm_razao, nm_endereco, nr_endereco, nm_bairro,
-                 nr_cep, nm_cidade, nm_uf, nm_fantasia, nr_ie, nr_cpfcnpj, dt_altera,cd_classif):
+                 nr_cep, nm_cidade, nm_uf, nm_fantasia, nr_ie, nr_cpfcnpj, dt_altera,cd_classif,cd_vendedor):
         self.cd_clifor = cd_clifor
         self.nr_fone = nr_fone
         self.nm_razao = nm_razao
@@ -82,6 +82,7 @@ class Clifor(db.Model):
         self.dt_altera = dt_altera
         self.nr_cpfcnpj = nr_cpfcnpj
         self.cd_classif = cd_classif
+        self.cd_vendedor = cd_vendedor
 
     def __repr__(self):
         return f"< Clifor {self.nm_fantasia} >"
