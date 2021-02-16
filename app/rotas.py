@@ -81,8 +81,9 @@ def cadastrar():
                     vl_limitepedven=lista['vl_limitepedven'],
                     vl_limitefin=lista['vl_limitefin']
                 )
-        db.session.add(new_pessoa)
-        db.session.commit()
+                s = s + 1
+                db.session.add(new_pessoa)
+            db.session.commit()
         return {"status": "Enviado"}
     else:
         return {"error": "The request payload is not in JSON format"}
