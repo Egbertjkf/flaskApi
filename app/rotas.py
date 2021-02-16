@@ -40,7 +40,10 @@ def CadVendedor():
                     nr_fone=lista['nm_vendedor']
                     )
                 db.session.add(new_Vendedor)
-                db.session.commit()
+                try:
+                    db.session.commit()
+                except:
+                    pass
                 s = s + 1
             return {"status": "Enviado"}
     else:
@@ -83,7 +86,10 @@ def cadastrar():
                 )
                 s = s + 1
                 db.session.add(new_pessoa)
-            db.session.commit()
+                try:
+                    db.session.commit()
+                except:
+                    pass
         return {"status": "Enviado"}
     else:
         return {"error": "The request payload is not in JSON format"}
@@ -129,7 +135,10 @@ def cadastraClifor():
                     dt_altera = lista['dt_altera']
                 )
                 db.session.add(new_clifor)
-                db.session.commit()
+                try:
+                    db.session.commit()
+                except:
+                    pass
                 s = s + 1
             return {"status": "Enviado"}
         else:
@@ -150,7 +159,10 @@ def cadastraClifor():
                 cd_classif=lista['cd_classif']
             )
             db.session.add(new_clifor)
-            db.session.commit()
+            try:
+                db.session.commit()
+            except:
+                pass
             return {"status": "Enviado"}
     else:
         return {"error": "The request payload is not in JSON format"}, 401
@@ -189,7 +201,10 @@ def cadastraTempClifor():
                     cd_vendedor=lista['cd_vendedor']
                 )
                 db.session.add(new_clifor)
-                db.session.commit()
+                try:
+                    db.session.commit()
+                except:
+                    pass
                 s = s + 1
             return {"status": "Enviado"}
         else:
@@ -209,7 +224,10 @@ def cadastraTempClifor():
                 cd_vendedor=data['cd_vendedor']
             )
             db.session.add(new_clifor)
-            db.session.commit()
+            try:
+                    db.session.commit()
+            except:
+                    pass
             return {"status": "Enviado"}
     else:
         return {"error": "The request payload is not in JSON format"}, 401
@@ -256,7 +274,10 @@ def cadastraItPedido():
             ds_produto=data["ds_produto"]
         )
         db.session.add(new_itpedido)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except:
+            pass
         return {"status": "Enviado"}
     else:
         return {"error": "The request payload is not in JSON format"}
@@ -313,7 +334,10 @@ def cadastraPedido():
                 db.session.add(new_itpedido)
             s = s + 1
             db.session.add(new_pedido)
-        db.session.commit()
+                try:
+                    db.session.commit()
+                except:
+                    pass
         return {"status": "Enviado"}
     else:
         return {"error": "The request payload is not in JSON format"}
