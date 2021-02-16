@@ -333,7 +333,7 @@ def mostraTabPreCli():
     tabpres = Tabpre_cliSchema(many=True)
     if 'dataimp' in request.headers:
         dataimp = request.headers['dataimp']
-        result = Tabpre_cli.query.filter(Tabpre_cli.dt_ultvenda >= dataimp)
+        result = Tabpre_cli.query.filter(Tabpre_cli.dt_altera >= dataimp)
     else:
         dataimp = ''
         result = Tabpre_cli.query.all()
@@ -352,14 +352,14 @@ def cadastraTabPreCli():
                 lista = data[s]
                 new_clifor = Tabpre_cli(
                     cd_clifor=lista['cd_clifor'],
+                    cd_produto=lista['cd_produto'],
                     ds_produto=lista['ds_produto'],
                     nr_sequen=lista['nr_sequen'],
                     dt_implanta=lista['dt_implanta'],
                     vl_tabela=lista['vl_tabela'],
                     fl_status=lista['fl_status'],
-                    dt_ultvenda=lista['dt_ultvenda'],
-                    vl_percmax=lista['vl_percmax'],
-                    vl_percmin=lista['vl_percmin']
+                    vl_descmax=lista['vl_descmax'],
+                    vl_acremax=lista['vl_acremax']
                 )
                 db.session.add(new_clifor)
                 db.session.commit()

@@ -129,7 +129,8 @@ class Tabpre_cliSchema(ma.Schema):
             "fl_status",
             "dt_ultvenda",
             "vl_percmax",
-            "vl_percmin"
+            "vl_percmin",
+            "cd_produto"
         )
 
 
