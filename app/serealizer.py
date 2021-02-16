@@ -42,7 +42,8 @@ class CliforSchema(ma.Schema):
             "nm_fantasia",
             "nr_ie",
             "dt_altera",
-            "nr_cpfcnpj"
+            "nr_cpfcnpj",
+            "cd_classif"
 
         )
 
