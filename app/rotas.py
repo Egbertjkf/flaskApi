@@ -362,7 +362,10 @@ def cadastraTabPreCli():
                     vl_acremax=lista['vl_acremax']
                 )
                 db.session.add(new_clifor)
-                db.session.commit()
+                try
+                    db.session.commit()
+                except
+                    continue
                 s = s + 1
             return {"status": "Enviado"}
 
