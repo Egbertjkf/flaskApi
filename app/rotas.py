@@ -62,20 +62,25 @@ def mostrar():
 def cadastrar():
     if request.is_json:
         data = request.get_json()
-        new_pessoa = Pessoa(
-            nr_idpessoa=data['nr_idpessoa'],
-            nm_pessoa=data['nm_pessoa'],
-            nm_apelido=data['nm_apelido'],
-            dt_nascimento=data['dt_nascimento'],
-            fl_status=data['fl_status'],
-            ds_email=data['ds_email'],
-            nr_celular=data['nr_celular'],
-            nr_idperfil=data['nr_idperfil'],
-            nm_senha=data['nm_senha'],
-            vl_limiteordcom=data['vl_limiteordcom'],
-            vl_limitepedven=data['vl_limitepedven'],
-            vl_limitefin=data['vl_limitefin']
-        )
+        if type(data) == list:
+            itens = len(data)
+            s = 0
+            while s <= itens-1:
+                lista = data[s]
+                new_pessoa = Pessoa(
+                    nr_idpessoa=lista['nr_idpessoa'],
+                    nm_pessoa=lista['nm_pessoa'],
+                    nm_apelido=lista['nm_apelido'],
+                    dt_nascimento=lista['dt_nascimento'],
+                    fl_status=lista['fl_status'],
+                    ds_email=lista['ds_email'],
+                    nr_celular=lista['nr_celular'],
+                    nr_idperfil=lista['nr_idperfil'],
+                    nm_senha=lista['nm_senha'],
+                    vl_limiteordcom=lista['vl_limiteordcom'],
+                    vl_limitepedven=lista['vl_limitepedven'],
+                    vl_limitefin=lista['vl_limitefin']
+                )
         db.session.add(new_pessoa)
         db.session.commit()
         return {"status": "Enviado"}
