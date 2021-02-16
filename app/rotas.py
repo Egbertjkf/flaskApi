@@ -125,7 +125,8 @@ def cadastraClifor():
                     nm_fantasia=lista['nm_fantasia'],
                     nr_cpfcnpj=lista['nr_cpfcnpj'],
                     cd_vendedor=lista['cd_vendedor'],
-                    cd_classif=lista['cd_classif']
+                    cd_classif=lista['cd_classif'],
+                    dt_altera = lista['dt_altera']
                 )
                 db.session.add(new_clifor)
                 db.session.commit()

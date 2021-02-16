@@ -60,7 +60,6 @@ class TempCliforSchema(ma.Schema):
             "nm_cidade",
             "nm_uf",
             "nm_fantasia",
-            "nr_ie",
             "dt_altera",
             "nr_cpfcnpj",
             "cd_vendedor"
