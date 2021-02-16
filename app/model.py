@@ -240,7 +240,7 @@ class Tabpre_cli(db.Model):
     vl_desccmax = db.Column(db.String(10))
     vl_acremax = db.Column(db.String(10))
 
-    def __init__(self, cd_clifor, nr_sequen, cd_produto, dt_implanta, vl_tabela, fl_status, vl_desccmax, vl_acremax):
+    def __init__(self, cd_clifor, nr_sequen, cd_produto, dt_implanta, vl_tabela, fl_status, vl_desccmax, vl_acremax,ds_produto):
         self.cd_clifor = cd_clifor
         self.ds_produto = ds_produto
         self.nr_sequen = nr_sequen
