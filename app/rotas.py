@@ -332,12 +332,10 @@ def cadastraPedido():
                 )
                 n = n+1
                 db.session.add(new_itpedido)
-            s = s + 1
+                 s = s + 1
             db.session.add(new_pedido)
-                try:
-                    db.session.commit()
-                except:
-                    pass
+        db.session.commit()
+
         return {"status": "Enviado"}
     else:
         return {"error": "The request payload is not in JSON format"}
