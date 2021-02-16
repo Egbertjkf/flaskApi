@@ -123,7 +123,6 @@ def cadastraClifor():
                     nm_cidade=lista['nm_cidade'],
                     nm_uf=lista['nm_uf'],
                     nm_fantasia=lista['nm_fantasia'],
-                    nr_ie=lista['nr_ie'],
                     nr_cpfcnpj=lista['nr_cpfcnpj'],
                     cd_vendedor=lista['cd_vendedor'],
                     cd_classif=lista['cd_classif']
