@@ -36,8 +36,8 @@ def CadVendedor():
             while s <= itens-1:
                 lista = data[s]
                 new_Vendedor = Vendedor(
-                    cd_clifor=lista['cd_vendedor'],
-                    nr_fone=lista['nm_vendedor']
+                    cd_vendedor=lista['cd_vendedor'],
+                    nm_vendedor=lista['nm_vendedor']
                     )
                 db.session.add(new_Vendedor)
                 try:
