@@ -65,7 +65,7 @@ class Clifor(db.Model):
     dt_altera = db.Column(db.Date)
     nr_cpfcnpj = db.Column(db.String(14), nullable=False)
     cd_classif = db.Column(db.Integer)
-    cd_vendedor= db.Column(db.Intege,nullable=False)
+    cd_vendedor= db.Column(db.Integer,nullable=False)
 
     def __init__(self, cd_clifor, nr_fone, nm_razao, nm_endereco, nr_endereco, nm_bairro,
                  nr_cep, nm_cidade, nm_uf, nm_fantasia, nr_cpfcnpj, dt_altera,cd_classif,cd_vendedor):
