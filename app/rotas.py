@@ -101,10 +101,10 @@ def mostraClifor():
     cs = CliforSchema(many=True)
     if 'dataimp' in request.headers:
         dataimp = request.headers['dataimp']
-        result = Clifor.query.filter(Clifor.dt_altera >= dataimp)
+        result = Clifor.query.filter(db.and_(Clifor.dt_altera >= dataimp, Clifor.cd_vendedor == vend))
     else:
         dataimp = ''
-        result = Clifor.query.all()
+        result = Clifor.query.filter(Clifor.cd_vendedor == vend)
     return cs.jsonify(result)
 
 
