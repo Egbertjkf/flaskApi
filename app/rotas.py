@@ -109,8 +109,10 @@ def mostraClifor():
     else:
         if 'vend' in request.headers:
             vend = request.headers['vend']
-        dataimp = ''
-        result = Clifor.query.filter(Clifor.cd_vendedor == vend)
+            dataimp = ''
+            result = Clifor.query.filter(Clifor.cd_vendedor == vend)
+        else:
+            result = Clifor.query.all()
     return cs.jsonify(result)
 
 
