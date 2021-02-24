@@ -43,7 +43,8 @@ class CliforSchema(ma.Schema):
             "nr_ie",
             "dt_altera",
             "nr_cpfcnpj",
-            "cd_classif"
+            "cd_classif",
+            "cd_vendedor"
 
         )
 
@@ -129,8 +130,8 @@ class Tabpre_cliSchema(ma.Schema):
             "vl_tabela",
             "fl_status",
             "dt_ultvenda",
-            "vl_percmax",
-            "vl_percmin",
+            "vl_descmax",
+            "vl_acremax",
             "cd_produto"
         )
 
