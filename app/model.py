@@ -179,7 +179,7 @@ class It_pedido(db.Model):
 
     __tablename__ = 'it_pedido'
 
-    nr_pedido = db.Column(db.Integer, db.ForeignKey('pedido.nr_pedido'))
+    nr_pedido = db.Column(db.Integer, primary_key=True)
     nr_sequen = db.Column(db.Integer, primary_key=True)
     nr_pedidoSist = db.Column(db.Integer)
     cd_produto = db.Column(db.String(20))
@@ -284,7 +284,7 @@ class Pedido(db.Model):
     vl_fator = db.Column(db.Integer, nullable=False)
     cd_filial = db.Column(db.Integer, nullable=False)
     cd_condpg = db.Column(db.Integer)
-    cd_vendedor = db.Column(db.Integer)
+    cd_vendedor = db.Column(db.Integer,primary_key=True)
     ds_observ = db.Column(db.String(250))
     fl_status = db.Column(db.String(1))
 
