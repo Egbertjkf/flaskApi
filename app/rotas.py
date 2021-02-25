@@ -340,7 +340,7 @@ def cadastraPedido():
                 )
                 n = n+1
                 db.session.add(new_itpedido)
-                s = s + 1
+            s = s + 1
             db.session.add(new_pedido)
             db.session.commit()
 
