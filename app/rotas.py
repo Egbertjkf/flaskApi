@@ -295,7 +295,7 @@ def cadastraItPedido():
 @jwt_required
 def mostraPedido():
     peds = PedidoSchema(many=True)
-    result = it_pedido.query.all()
+    result = pedido.query.all()
     return peds.jsonify(result)
 
 

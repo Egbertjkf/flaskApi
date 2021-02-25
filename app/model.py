@@ -179,7 +179,7 @@ class It_pedido(db.Model):
 
     __tablename__ = 'it_pedido'
 
-    nr_pedido = db.Column(db.Integer, primary_key=True)
+    nr_pedido = db.Column(db.Integer, primary_key=True))
     nr_sequen = db.Column(db.Integer, primary_key=True)
     nr_pedidoSist = db.Column(db.Integer)
     cd_produto = db.Column(db.String(20))
