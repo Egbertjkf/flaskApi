@@ -389,8 +389,7 @@ def cadastraTabPreCli():
                     vl_tabela=lista['vl_tabela'],
                     fl_status=lista['fl_status'],
                     vl_descmax=lista['vl_descmax'],
-                    vl_acremax=lista['vl_acremax'],
-                    ds_produto=lista['ds_produto']
+                    vl_acremax=lista['vl_acremax']
                 )
                 db.session.add(new_clifor)
                 try:
