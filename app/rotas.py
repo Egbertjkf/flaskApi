@@ -342,7 +342,7 @@ def cadastraPedido():
                 db.session.add(new_itpedido)
                 s = s + 1
             db.session.add(new_pedido)
-        db.session.commit()
+            db.session.commit()
 
         return {"status": "Enviado"}
     else:
