@@ -179,7 +179,7 @@ class It_pedido(db.Model):
 
     __tablename__ = 'it_pedido'
 
-    nr_pedido = db.Column(db.Integer, primary_key=True)
+    
     nr_sequen = db.Column(db.Integer, primary_key=True)
     nr_pedidoSist = db.Column(db.Integer)
     cd_produto = db.Column(db.String(20))
@@ -190,6 +190,7 @@ class It_pedido(db.Model):
     vl_percdesc = db.Column(db.String(3))
     vl_liquido = db.Column(db.String(30))
     ds_produto = db.Column(db.String(100))
+    nr_pedido = db.Column(db.Integer, primary_key=True)
 
     def __init__(self, nr_pedido, nr_sequen, nr_pedidoSist, cd_produto, ds_complementar, cd_unidade,
                  qt_item, vl_unit, vl_percdesc, vl_liquido, ds_produto):
