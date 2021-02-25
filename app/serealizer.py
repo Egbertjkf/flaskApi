@@ -132,7 +132,8 @@ class Tabpre_cliSchema(ma.Schema):
             "dt_ultvenda",
             "vl_descmax",
             "vl_acremax",
-            "cd_produto"
+            "cd_produto",
+            "ds_produto"
         )
 
 

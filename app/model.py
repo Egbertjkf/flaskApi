@@ -240,8 +240,9 @@ class Tabpre_cli(db.Model):
     fl_status = db.Column(db.String(1))
     vl_desccmax = db.Column(db.String(10))
     vl_acremax = db.Column(db.String(10))
+    ds_produto = db.Column(db.String(100))
 
-    def __init__(self, cd_clifor, nr_sequen, cd_produto, dt_implanta, vl_tabela, fl_status, vl_descmax, vl_acremax,ds_produto):
+    def __init__(self, cd_clifor, nr_sequen, cd_produto, dt_implanta, vl_tabela, fl_status, vl_descmax, vl_acremax,ds_produto,ds_produto):
         self.cd_clifor = cd_clifor
         self.ds_produto = ds_produto
         self.nr_sequen = nr_sequen
@@ -251,6 +252,7 @@ class Tabpre_cli(db.Model):
         self.vl_descmax = vl_descmax
         self.vl_acremax = vl_acremax
         self.cd_produto = cd_produto
+        self.ds_produto = ds_produto
 
     def __repr__(self):
         return f"< Clifor {self.cd_clifor} >"
