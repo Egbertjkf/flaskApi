@@ -404,6 +404,7 @@ def cadastraTabPreCli():
 @jwt_required
 def editarTabPreCli():
     tabpres = Tabpre_cliSchema()
+    data = request.get_json()
     if type(data) == list:
             itens = len(data)
             s = 0
