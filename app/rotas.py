@@ -420,7 +420,7 @@ def editarTabPreCli():
                 except:
                     result = {'Status' : 'Nada a enviar'}
                 s = s + 1
-    return tabpres.jsonify(result)
+    return tabpres.jsonify(query.first())
 
 
 @bp_pessoa.route('/internet', methods=['GET'])
