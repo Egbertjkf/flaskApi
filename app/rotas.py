@@ -423,7 +423,7 @@ def editarTabPreCli():
                 except:
                     return {"status": "except"}
                 s = s + 1
-    else
+    else:
         query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == 'cd_produto',Tabpre_cli.cd_produto == 'cd_clifor')
         try:
             editato = request.headers['editado']
