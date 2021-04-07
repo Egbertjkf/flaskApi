@@ -373,6 +373,7 @@ def mostraTabPreCli():
 @bp_tabpre_cli.route('/CadTabPreCli', methods=['POST'])
 @jwt_required
 def cadastraTabPreCli():
+    ts = Tabpre_cliSchema()
     if request.is_json:
         data = request.get_json()
         if type(data) == list:
@@ -398,6 +399,27 @@ def cadastraTabPreCli():
                     pass
                 s = s + 1
             return {"status": "Enviado"}
+
+@bp_tabpre_cli.route('/edtTabPreCli', methods=['GET'])
+@jwt_required
+def editarTabPreCli():
+    tabpres = Tabpre_cliSchema()
+    if type(data) == list:
+            itens = len(data)
+            s = 0
+            while s <= itens-1:
+                lista = data[s]
+                query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == lista['cd_produto'],Tabpre_cli.cd_produto == lista['cd_clifor'])
+                try:
+                    editato = request.headers['editado']
+                    #result = 
+                    query.update(request.json)
+                    current_app.db.session.commit()
+                    result = {'Status' : 'Enviado'}
+                except:
+                    result = {'Status' : 'Nada a enviar'}
+                s = s + 1
+    return tabpres.jsonify(result)
 
 
 @bp_pessoa.route('/internet', methods=['GET'])
