@@ -413,7 +413,7 @@ def editarTabPreCli():
             while s <= itens-1:
                 #return {"status": "while"}
                 lista = data[s]
-                query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == lista['cd_produto'],Tabpre_cli.cd_produto == lista['cd_clifor'])               
+                query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == lista['cd_produto'])               
                 #result = 
                 query.update(request.json)
                 current_app.db.session.commit()
