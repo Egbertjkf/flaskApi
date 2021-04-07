@@ -405,10 +405,13 @@ def cadastraTabPreCli():
 def editarTabPreCli():
     tabpres = Tabpre_cliSchema()
     data = request.get_json()
+    result = {'Status' : 'começo'}
     if type(data) == list:
+            result = {'Status' : 'if'}
             itens = len(data)
             s = 0
             while s <= itens-1:
+                result = {'Status' : 'while'}
                 lista = data[s]
                 query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == lista['cd_produto'],Tabpre_cli.cd_produto == lista['cd_clifor'])
                 try:
@@ -420,7 +423,7 @@ def editarTabPreCli():
                 except:
                     result = {'Status' : 'Nada a enviar'}
                 s = s + 1
-    return tabpres.jsonify(query.first())
+    return tabpres.jsonify(result)
 
 
 @bp_pessoa.route('/internet', methods=['GET'])
