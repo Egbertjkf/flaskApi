@@ -414,25 +414,20 @@ def editarTabPreCli():
                 #return {"status": "while"}
                 lista = data[s]
                 query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == lista['cd_produto'],Tabpre_cli.cd_produto == lista['cd_clifor'])
-                try:
-                    editato = request.headers['editado']
-                    #result = 
-                    query.update(request.json)
-                    current_app.db.session.commit()
-                    #return {"status": "try"}
-                except:
-                    #result
+                
+                editato = request.headers['editado']
+                #result = 
+                query.update(request.json)
+                current_app.db.session.commit()
+                #return {"status": "try"}
                 s = s + 1
     else:
         query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == 'cd_produto',Tabpre_cli.cd_produto == 'cd_clifor')
-        try:
-            editato = request.headers['editado']
-            #result = 
-            query.update(request.json)
-            current_app.db.session.commit()
-            #return {"status": "try"}
-        except:
-            #return {"status": "except"}
+        editato = request.headers['editado']
+        #result = 
+        query.update(request.json)
+        current_app.db.session.commit()
+        #return {"status": "try"}
     return {"status": "Enviado"}
 
 
