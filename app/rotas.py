@@ -423,6 +423,16 @@ def editarTabPreCli():
                 except:
                     return {"status": "except"}
                 s = s + 1
+    else
+        query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == 'cd_produto',Tabpre_cli.cd_produto == 'cd_clifor')
+        try:
+            editato = request.headers['editado']
+            #result = 
+            query.update(request.json)
+            current_app.db.session.commit()
+            return {"status": "try"}
+        except:
+            return {"status": "except"}
     return {"status": "Enviado"}
 
 
