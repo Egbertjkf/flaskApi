@@ -405,13 +405,13 @@ def cadastraTabPreCli():
 def editarTabPreCli():
     tabpres = Tabpre_cliSchema()
     data = request.get_json()
-#    return {"status": "começo"}
+    #return {"status": "começo"}
     if type(data) == list:
-#            return {"status": "if"}
+            #return {"status": "if"}
             itens = len(data)
             s = 0
             while s <= itens-1:
-#                return {"status": "while"}
+                #return {"status": "while"}
                 lista = data[s]
                 query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == lista['cd_produto'],Tabpre_cli.cd_produto == lista['cd_clifor'])
                 try:
@@ -419,9 +419,9 @@ def editarTabPreCli():
                     #result = 
                     query.update(request.json)
                     current_app.db.session.commit()
-#                    return {"status": "try"}
+                    #return {"status": "try"}
                 except:
-#                    return {"status": "except"}
+                    #result
                 s = s + 1
     else:
         query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == 'cd_produto',Tabpre_cli.cd_produto == 'cd_clifor')
@@ -430,9 +430,9 @@ def editarTabPreCli():
             #result = 
             query.update(request.json)
             current_app.db.session.commit()
-#            return {"status": "try"}
+            #return {"status": "try"}
         except:
-#            return {"status": "except"}
+            #return {"status": "except"}
     return {"status": "Enviado"}
 
 
