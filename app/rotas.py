@@ -403,7 +403,7 @@ def cadastraTabPreCli():
 @bp_tabpre_cli.route('/edtTabPreCli', methods=['PUT'])
 @jwt_required
 def editarTabPreCli():
-    tabpres = Tabpre_cliSchema()
+    tabpres = Tabpre_cliSchema(many=True)
     data = request.get_json()
     #return {"status": "começo"}
     if type(data) == list:
