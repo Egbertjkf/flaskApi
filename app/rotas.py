@@ -400,7 +400,7 @@ def cadastraTabPreCli():
                 s = s + 1
             return {"status": "Enviado"}
 
-@bp_tabpre_cli.route('/edtTabPreCli', methods=['GET'])
+@bp_tabpre_cli.route('/edtTabPreCli', methods=['PUT'])
 @jwt_required
 def editarTabPreCli():
     tabpres = Tabpre_cliSchema()
