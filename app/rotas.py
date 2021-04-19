@@ -400,9 +400,9 @@ def cadastraTabPreCli():
                 s = s + 1
             return {"status": "Enviado"}
 
-@bp_tabpre_cli.route('/edtTabPreCli/<cd_clifor>/<cd_produto>', methods=['PUT'])
+@bp_tabpre_cli.route('/edtTabPreCli/<cd_clifor>', methods=['PUT'])
 @jwt_required
-def editarTabPreCli(cd_clifor,cd_produto):
+def editarTabPreCli(cd_clifor):
     data = request.get_json()
     get_tab = Tabpre_cli.query.get(cd_clifor)
     if data.get('vl_tabela'):
