@@ -404,7 +404,7 @@ def cadastraTabPreCli():
 @jwt_required
 def editarTabPreCli(self,cd_clifor,cd_produto):
     data = request.get_json()
-    get_tab = Tabpre_cli.query.get(cd_clifor,cd_produto)
+    get_tab = Tabpre_cli.query.get(self,cd_clifor,cd_produto)
     if data.get('vl_tabela'):
         get_tab.vl_tabela = data['vl_tabela']
     if data.get('vl_descmax'):
