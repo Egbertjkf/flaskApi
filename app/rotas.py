@@ -400,25 +400,22 @@ def cadastraTabPreCli():
                 s = s + 1
             return {"status": "Enviado"}
 
-@bp_tabpre_cli.route('/edtTabPreCli', methods=['PUT'])
+@bp_tabpre_cli.route('/edtTabPreCli/<cd_clifor>/<cd_produto>', methods=['PUT'])
 @jwt_required
-def editarTabPreCli():
-    tabpres = Tabpre_cliSchema(many=True)
+def editarTabPreCli(cd_clifor,cd_produto):
     data = request.get_json()
-    #return {"status": "começo"}
-    if type(data) == list:
-            #return {"status": "if"}
-            itens = len(data)
-            s = 0
-            while s <= itens-1:
-                #return {"status": "while"}
-                lista = data[s]
-                query = Tabpre_cli.query.filter(Tabpre_cli.cd_produto == lista['cd_produto'])               
-                #result = 
-                query.update(request.json)
-                current_app.db.session.commit()
-                #return {"status": "try"}
-                s = s + 1
+    get_tab = Tabpre_cli.query.get(cd_clifor,cd_produto)
+    if data.get('vl_tabela'):
+        get_tab.vl_tabela = data['vl_tabela']
+    if data.get('vl_descmax'):
+        get_tab.vl_descmax = data['vl_descmax']
+    if data.get('vl_acremax'):
+        get_tab.vl_acremax = data['vl_acremax']
+    db.session.add(get_tab)
+    db.session.commit()
+    TabprecliSchema = Tabpre_cliSchema(only = ['cd_clifor','cd_produto','vl_tabela','vl_descmax','vl_acremax'])
+    tabela = TabprecliSchema.dump(get_tab)
+    
     return {"status": "Enviado"}
 
 
