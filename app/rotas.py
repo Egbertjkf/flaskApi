@@ -413,7 +413,7 @@ def editarTabPreCli(cd_clifor,nr_sequen):
         get_tab.vl_acremax = data['vl_acremax']
     db.session.add(get_tab)
     db.session.commit()
-    TabprecliSchema = Tabpre_cliSchema(only = ['cd_clifor','cd_produto','vl_tabela','vl_descmax','vl_acremax'])
+    TabprecliSchema = Tabpre_cliSchema(only = ['cd_clifor','nr_sequen','vl_tabela','vl_descmax','vl_acremax'])
     tabela = TabprecliSchema.dump(get_tab)
     
     return {"status": "Enviado"}
@@ -423,3 +423,6 @@ def editarTabPreCli(cd_clifor,nr_sequen):
 @jwt_required
 def testeInt():
     return {"internet": "True"}
+
+
+
